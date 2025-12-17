@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "es2020"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "ui/*": ["./ui/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "src/**/*", "app/**/*", "ui/**/*"]
+}
