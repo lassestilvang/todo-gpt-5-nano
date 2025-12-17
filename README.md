@@ -22,6 +22,16 @@ This project provides a modern, split-view daily planner with Inbox-style lists,
 - Testing: Bun test
 - CI: GitHub Actions workflows
 
+## Deployment & Health Check
+- Health endpoint: /api/health
+- Health payload: { status: 'ok' } on success
+- DB health check uses adapter.health() when available
+
+## Health & Diagnostics
+- Endpoint: /api/health
+- Returns 200 with { status: 'ok' } when SQLite path is healthy
+- Returns 500 with error details if unhealthy
+
 ## Quick Start (Local Development)
 - Install dependencies
   - `bun install`
@@ -53,7 +63,7 @@ This project includes a migration bridge to a true SQLite database. The process 
 
 4) Validate end-to-end
    - Visit: `/today`, `/week`, `/upcoming`, `/all`
-   - Verify APIs: `/api/lists`, `/api/tasks?view=...`, `/api/search`
+   - Verify APIs: `/api/lists`, `/api/tasks?view=...`, `/api/search`, `/api/health`
    - Run tests: `bun test`
 
 5) Optional: Replace the shim with a real SQLite adapter
@@ -68,7 +78,7 @@ This project includes a migration bridge to a true SQLite database. The process 
 
 ## CI & Validation
 - CI workflow enforces the presence of a true SQLite path for end-to-end validation in the `sqlite-integration` job
-- A separate `sqlite-subtasks` integration test covers subtasks wiring against SQLite
+- A separate `sqlite-subtasks` integration test covers subtasks path on the real path
 - Local development can continue to use the in-memory SQLite shim for quick iteration
 
 ## Data Model Summary
@@ -82,5 +92,3 @@ This project includes a migration bridge to a true SQLite database. The process 
 
 ## License
 - This project is provided as-is under the repository’s license.
-
-If you want any section reorganized or expanded (e.g., developer onboarding, architecture diagrams, or API contracts), I can tailor the README further. 
