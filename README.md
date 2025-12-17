@@ -1,7 +1,5 @@
 # Daily Planner
 
-A production-ready daily task planner built with Next.js 16 App Router, Bun, SQLite, Tailwind, and Framer Motion.
-
 ## Overview
 This project provides a modern, split-view daily planner with Inbox-style lists, per-view task boards, fuzzy search, and a local SQLite-backed data store. It includes seed data, migration tooling, tests, and CI coverage. The SQLite path is enforced in CI; a local in-process SQLite-like shim is available for development when native bindings are not yet present.
 

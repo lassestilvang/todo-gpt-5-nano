@@ -8,9 +8,9 @@
     "build": "bun build",
     "start": "bun run start",
     "test": "bun test",
-    "seed": "bun run tsx scripts/seed.ts",
-    "migrate": "bun run tsx scripts/migrate_normalize.ts",
-    "migrate-sql": "bun run tsx scripts/migrate_sql.ts"
+    "seed": "bun run ./scripts/seed.ts",
+    "migrate": "bun run ./scripts/migrate_normalize.ts",
+    "migrate-sql": "bun run ./scripts/generate_sqlite_migration.ts"
   },
   "dependencies": {
     "react": "18.x",

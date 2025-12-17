@@ -1,0 +1,54 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  json-path:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Bun (install)
+        run: curl -fsSL https://bun.sh/install | bash
+      - name: Install dependencies
+        run: bun install
+      - name: Run tests (JSON path)
+        env:
+          DB_BACKEND: json
+        run: bun test
+  sqlite-path:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Bun (install)
+        run: curl -fsSL https://bun.sh/install | bash
+      - name: Install dependencies
+        run: bun install
+      - name: Run tests (SQLite shim path)
+        env:
+          DB_BACKEND: sqlite
+        run: bun test
+  sqlite-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Bun (install)
+        run: curl -fsSL https://bun.sh/install | bash
+      - name: Install dependencies
+        run: bun install
+      - name: Run real SQLite path integration test
+        env:
+          DB_BACKEND: sqlite
+        run: bun test tests/integration_sqlite_path.test.ts -s
+  sqlite-subtasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Bun (install)
+        run: curl -fsSL https://bun.sh/install | bash
+      - name: Install dependencies
+        run: bun install
+      - name: Run real SQLite path subtasks test
+        env:
+          DB_BACKEND: sqlite
+        run: bun test tests/integration_sqlite_path_subtasks.test.ts -s

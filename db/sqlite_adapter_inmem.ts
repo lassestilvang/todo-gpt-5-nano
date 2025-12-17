@@ -20,6 +20,8 @@ type TaskRow = {
   updated_at?: string
 }
 
+type LabelRow = { id: string; name: string; icon?: string; color?: string }
+
 export default class InMemorySqliteAdapter {
   private data: {
     lists: ListRow[]
@@ -48,7 +50,7 @@ export default class InMemorySqliteAdapter {
           }
         }
       } catch {
-        // ignore
+        // ignore seed from json if not present
       }
     }
   }
@@ -65,36 +67,87 @@ export default class InMemorySqliteAdapter {
     return {
       run: function(...params: any[]) {
         const s = sql.trim()
+        // Insert into lists
         if (/INSERT INTO lists/.test(s)) {
-          const [id, name, color, emoji] = params
+          const vals = params
+          // expect [id, name, color, emoji]
+          const [id, name, color, emoji] = vals
           self.data.lists.push({ id, name, color, emoji, created_at: new Date().toISOString() })
           return
         }
+        // Insert into tasks
         if (/INSERT INTO tasks/.test(s)) {
           const [id, list_id, name, description, date, deadline, reminders, estimate, actual_time, labels, priority, subtasks, recurring, attachment, completed, created_at, updated_at] = params
-          self.data.tasks.push({ id, list_id, name, description, date, deadline, reminders: reminders ?? [], estimate, actual_time, labels: labels ?? [], priority: priority ?? 'None', subtasks: subtasks ?? [], recurring: recurring ?? null, attachment: attachment ?? null, completed: !!completed, created_at, updated_at })
+          self.data.tasks.push({ id, list_id, name, description, date, deadline, reminders: typeof reminders === 'string' ? JSON.parse(reminders) : reminders ?? [], estimate, actual_time, labels: typeof labels === 'string' ? JSON.parse(labels) : labels ?? [], priority, subtasks: typeof subtasks === 'string' ? JSON.parse(subtasks) : subtasks ?? [], recurring, attachment, completed: !!completed, created_at, updated_at })
           return
         }
+        // Insert into logs
         if (/INSERT INTO logs/.test(s)) {
           const [id, task_id, action, details, timestamp] = params
           self.data.logs.push({ id, task_id, action, timestamp: timestamp ?? new Date().toISOString(), details })
           return
         }
+        // Subtasks direct insert (legacy path)
+        if (/INSERT INTO subtasks/.test(s)) {
+          const [id, task_id, name, done] = params
+          self.data.subtasks.push({ id: id ?? `sub_${Math.random()}`, task_id, name, done: !!done, created_at: new Date().toISOString(), updated_at: new Date().toISOString() })
+          return
+        }
+        // Labels direct insert
+        if (/INSERT INTO labels/.test(s)) {
+          const [id, name, icon, color] = params
+          self.data.labels.push({ id, name, icon, color })
+          return
+        }
+        if (/INSERT INTO task_labels/.test(s)) {
+          const [task_id, label_id] = params
+          self.data.task_labels.push({ task_id, label_id })
+          return
+        }
+        if (/INSERT INTO reminders/.test(s)) {
+          const [id, task_id, when, type] = params
+          self.data.reminders.push({ id, task_id, when, type })
+          return
+        }
       },
       all: function(...params: any[]) {
         const s = sql.trim()
+        // Read lists
         if (/SELECT .*FROM lists/.test(s)) {
           return self.data.lists.map(l => ({ id: l.id, name: l.name, color: l.color, emoji: l.emoji, created_at: l.created_at }))
         }
-        if (/SELECT \* FROM tasks/.test(s)) {
+        if (/SELECT id, name, color, emoji, created_at FROM lists/.test(s)) {
+          return self.data.lists.map(l => ({ id: l.id, name: l.name, color: l.color, emoji: l.emoji, created_at: l.created_at }))
+        }
+        // Read all tasks
+        if (/SELECT \* FROM tasks/.test(s) || /SELECT .*FROM tasks/.test(s)) {
+          // naive WHERE handling
+          if (s.includes('WHERE date = ?')) {
+            const [d] = params
+            return self.data.tasks.filter(t => t.date === d)
+          }
+          if (s.includes('WHERE date BETWEEN ? AND ?')) {
+            const [start, end] = params
+            return self.data.tasks.filter(t => t.date >= start && t.date <= end)
+          }
+          if (s.includes('WHERE date IS NOT NULL')) {
+            return self.data.tasks.filter(t => t.date != null)
+          }
           return self.data.tasks
         }
+        // Subtasks for a task
         if (/SELECT \* FROM subtasks/.test(s)) {
-          const [task_id] = params
-          return self.data.subtasks.filter(st => st.task_id === task_id)
+          // expect WHERE task_id = ? or no clause
+          if (s.includes('WHERE')) {
+            const [task_id] = params
+            return self.data.subtasks.filter(st => st.task_id === task_id)
+          }
+          return self.data.subtasks
         }
-        if (/SELECT .*FROM labels/.test(s)) {
-          return self.data.labels
+        if (/SELECT 1 FROM labels/.test(s)) {
+          const [name] = params
+          const found = self.data.labels.find(l => l.name === name)
+          return found ? [{ exists: 1 }] : []
         }
         if (/SELECT \* FROM logs/.test(s)) {
           const [task_id] = params
@@ -104,7 +157,7 @@ export default class InMemorySqliteAdapter {
       },
       get: function(...params: any[]) {
         const rows = this.all(...params)
-        return rows[0] ?? null
+        return rows && rows.length ? rows[0] : null
       }
     }
   }

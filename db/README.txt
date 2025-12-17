@@ -1,0 +1,1 @@
+This directory holds adapters for DB backends (json, sqlite in-mem).
