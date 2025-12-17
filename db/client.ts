@@ -1,7 +1,17 @@
-// JSON fallback DB (no native bindings). Prefer native bindings when available.
+// SQLite/JSON backend selector with a feature flag
 import JsonDb from './jsondb'
+import SqliteShim from './sqlite_adapter'
+import { DB_BACKEND } from '../app/config'
 
-const DB_PATH = './data/planner.json'
-const db = new (JsonDb as any)(DB_PATH) as any
+const jsonDbPath = './data/planner.json'
+const useSqlite = DB_BACKEND === 'sqlite'
+
+let db: any
+if (useSqlite) {
+  console.log('[DB] Using SQLite shim adapter (JSON backend under the hood).')
+  db = new SqliteShim()
+} else {
+  db = new JsonDb(jsonDbPath)
+}
 
 export default db

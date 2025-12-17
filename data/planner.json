@@ -48,6 +48,48 @@
       "color": "#10b981",
       "emoji": null,
       "created_at": "2025-12-17T09:26:56.949Z"
+    },
+    {
+      "id": "list_ig67vir",
+      "name": "Inbox",
+      "color": "#3b82f6",
+      "emoji": null,
+      "created_at": "2025-12-17T09:33:47.181Z"
+    },
+    {
+      "id": "list_kx00i1q",
+      "name": "Inbox",
+      "color": "#3b82f6",
+      "emoji": "📥",
+      "created_at": "2025-12-17T09:33:47.183Z"
+    },
+    {
+      "id": "list_zg8tbuu",
+      "name": "Work",
+      "color": "#10b981",
+      "emoji": null,
+      "created_at": "2025-12-17T09:33:47.184Z"
+    },
+    {
+      "id": "list_a3gvdom",
+      "name": "Inbox",
+      "color": "#3b82f6",
+      "emoji": null,
+      "created_at": "2025-12-17T09:38:29.400Z"
+    },
+    {
+      "id": "list_fdyrnly",
+      "name": "Inbox",
+      "color": "#3b82f6",
+      "emoji": "📥",
+      "created_at": "2025-12-17T09:38:29.408Z"
+    },
+    {
+      "id": "list_ifjcmn2",
+      "name": "Work",
+      "color": "#10b981",
+      "emoji": null,
+      "created_at": "2025-12-17T09:38:29.408Z"
     }
   ],
   "tasks": [
@@ -240,6 +282,158 @@
       "completed": false,
       "created_at": "2025-12-17T09:26:56.949Z",
       "updated_at": "2025-12-17T09:26:56.949Z"
+    },
+    {
+      "id": "task_q1v0u1i",
+      "list_id": "list_ig67vir",
+      "name": "Test For Today",
+      "description": null,
+      "date": "2025-12-17",
+      "deadline": null,
+      "reminders": "[]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[]",
+      "priority": "None",
+      "subtasks": "[]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:33:47.182Z",
+      "updated_at": "2025-12-17T09:33:47.182Z"
+    },
+    {
+      "id": "task_0gxfddf",
+      "list_id": null,
+      "name": "Lunch with Sarah",
+      "description": null,
+      "date": null,
+      "deadline": null,
+      "reminders": "[]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[]",
+      "priority": "None",
+      "subtasks": "[]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:33:47.182Z",
+      "updated_at": "2025-12-17T09:33:47.182Z"
+    },
+    {
+      "id": "task_pb1m2ss",
+      "list_id": null,
+      "name": "Sample Task",
+      "description": null,
+      "date": null,
+      "deadline": null,
+      "reminders": "[]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[]",
+      "priority": "None",
+      "subtasks": "[]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:33:47.184Z",
+      "updated_at": "2025-12-17T09:33:47.184Z"
+    },
+    {
+      "id": "task_sexrd5m",
+      "list_id": "list_zg8tbuu",
+      "name": "Review Q4 plan",
+      "description": null,
+      "date": "2025-12-17",
+      "deadline": null,
+      "reminders": "[\"2025-12-17T09:33:47.184Z\"]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[{\"name\":\"Review\",\"icon\":\"📝\"},{\"name\":\"Calendar\",\"icon\":\"🗓️\"}]",
+      "priority": "None",
+      "subtasks": "[{\"name\":\"Prepare slides\",\"done\":false},{\"name\":\"Send invites\",\"done\":true}]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:33:47.184Z",
+      "updated_at": "2025-12-17T09:33:47.184Z"
+    },
+    {
+      "id": "task_lmf62ku",
+      "list_id": "list_a3gvdom",
+      "name": "Test For Today",
+      "description": null,
+      "date": "2025-12-17",
+      "deadline": null,
+      "reminders": "[]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[]",
+      "priority": "None",
+      "subtasks": "[]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:38:29.402Z",
+      "updated_at": "2025-12-17T09:38:29.402Z"
+    },
+    {
+      "id": "task_fuk8v9u",
+      "list_id": null,
+      "name": "Lunch with Sarah",
+      "description": null,
+      "date": null,
+      "deadline": null,
+      "reminders": "[]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[]",
+      "priority": "None",
+      "subtasks": "[]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:38:29.404Z",
+      "updated_at": "2025-12-17T09:38:29.404Z"
+    },
+    {
+      "id": "task_t0q8hzm",
+      "list_id": null,
+      "name": "Sample Task",
+      "description": null,
+      "date": null,
+      "deadline": null,
+      "reminders": "[]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[]",
+      "priority": "None",
+      "subtasks": "[]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:38:29.408Z",
+      "updated_at": "2025-12-17T09:38:29.408Z"
+    },
+    {
+      "id": "task_xkpmuup",
+      "list_id": "list_ifjcmn2",
+      "name": "Review Q4 plan",
+      "description": null,
+      "date": "2025-12-17",
+      "deadline": null,
+      "reminders": "[\"2025-12-17T09:38:29.408Z\"]",
+      "estimate": null,
+      "actual_time": null,
+      "labels": "[{\"name\":\"Review\",\"icon\":\"📝\"},{\"name\":\"Calendar\",\"icon\":\"🗓️\"}]",
+      "priority": "None",
+      "subtasks": "[{\"name\":\"Prepare slides\",\"done\":false},{\"name\":\"Send invites\",\"done\":true}]",
+      "recurring": null,
+      "attachment": null,
+      "completed": false,
+      "created_at": "2025-12-17T09:38:29.408Z",
+      "updated_at": "2025-12-17T09:38:29.408Z"
     }
   ],
   "subtasks": [
@@ -274,6 +468,38 @@
       "done": 1,
       "created_at": "2025-12-17T09:26:56.949Z",
       "updated_at": "2025-12-17T09:26:56.949Z"
+    },
+    {
+      "id": "sub_rzqxv0t",
+      "task_id": "task_sexrd5m",
+      "name": "Prepare slides",
+      "done": 0,
+      "created_at": "2025-12-17T09:33:47.184Z",
+      "updated_at": "2025-12-17T09:33:47.184Z"
+    },
+    {
+      "id": "sub_m4xiz79",
+      "task_id": "task_sexrd5m",
+      "name": "Send invites",
+      "done": 1,
+      "created_at": "2025-12-17T09:33:47.184Z",
+      "updated_at": "2025-12-17T09:33:47.184Z"
+    },
+    {
+      "id": "sub_9kg233h",
+      "task_id": "task_xkpmuup",
+      "name": "Prepare slides",
+      "done": 0,
+      "created_at": "2025-12-17T09:38:29.408Z",
+      "updated_at": "2025-12-17T09:38:29.408Z"
+    },
+    {
+      "id": "sub_577fl0p",
+      "task_id": "task_xkpmuup",
+      "name": "Send invites",
+      "done": 1,
+      "created_at": "2025-12-17T09:38:29.409Z",
+      "updated_at": "2025-12-17T09:38:29.409Z"
     }
   ],
   "labels": [
@@ -288,6 +514,30 @@
       "name": "Calendar",
       "icon": "🗓️",
       "color": null
+    },
+    {
+      "id": "label_8mtua2a",
+      "name": "Review",
+      "icon": "📝",
+      "color": null
+    },
+    {
+      "id": "label_dquuols",
+      "name": "Calendar",
+      "icon": "🗓️",
+      "color": null
+    },
+    {
+      "id": "label_vl5w1bm",
+      "name": "Review",
+      "icon": "📝",
+      "color": null
+    },
+    {
+      "id": "label_8h2qaew",
+      "name": "Calendar",
+      "icon": "🗓️",
+      "color": null
     }
   ],
   "task_labels": [],
@@ -296,6 +546,18 @@
       "id": "rem_bdydwp5",
       "task_id": "task_l7pa4vc",
       "when": "2025-12-17T09:26:56.949Z",
+      "type": null
+    },
+    {
+      "id": "rem_qp0x72g",
+      "task_id": "task_sexrd5m",
+      "when": "2025-12-17T09:33:47.184Z",
+      "type": null
+    },
+    {
+      "id": "rem_gfnjan6",
+      "task_id": "task_xkpmuup",
+      "when": "2025-12-17T09:38:29.408Z",
       "type": null
     }
   ],
