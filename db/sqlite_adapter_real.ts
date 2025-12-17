@@ -1,8 +1,8 @@
 export default class RealSqliteAdapter {
   private db: any
   constructor(dbPath: string) {
-    // Lazy require to avoid crash if not installed in environments without native bindings
-    const Database = (global as any).require?.('better-sqlite3') || (typeof require !== 'undefined' ? require('better-sqlite3') : null)
+    // Load native binding; throw if not installed
+    const Database = (typeof require !== 'undefined' ? require('better-sqlite3') : null)
     if (!Database) {
       throw new Error('better-sqlite3 is not installed. Install it to enable the real SQLite backend.')
     }
