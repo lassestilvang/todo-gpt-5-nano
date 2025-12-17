@@ -1,0 +1,1 @@
+Plan for in-memory sqlite adapter: uses JS maps to emulate tables; maps SQL strings to operations. This is a temporary path for local testing. The goal is to fully drop JSON and operate with an in-memory sqlite-like store until a real sqlite binding is available.
