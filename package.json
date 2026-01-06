@@ -15,7 +15,7 @@
   "dependencies": {
     "react": "18.x",
     "react-dom": "18.x",
-    "next": "16.0.0",
+    "next": "16.0.10",
 
     "postcss": "^8.4",
     "autoprefixer": "^10.4",
